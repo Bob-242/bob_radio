@@ -1,0 +1,140 @@
+
+:root {
+/*
+  --rojo: #e1121b;
+  --rojo-oscuro: #b30e15;
+  --texto: #ff2b2b;
+  --fondo: #000;
+  
+  --bg: #0f172a;       
+  --panel: #111827;    
+  --accent: #38bdf8;   
+  --accent-2: #22d3ee; 
+  --text: #38bdf8;        
+  --muted: #9ca3af;    
+*/
+  --rojo: #0f172a;   
+  --rojo-oscuro: #09225a;
+  --texto: #9ca3af;
+  --fondo: #000;
+}
+
+/* Layout base */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+h1 { margin: 10px 0 0 0; font-size: 24px; }
+
+/* 3 columnas fijas */
+.contenedor-botones {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+/* Enlaces ocupan toda la celda y SIN SUBRAYADO */
+.contenedor-botones a,
+.contenedor-botones a:link,
+.contenedor-botones a:visited,
+.contenedor-botones a:hover,
+.contenedor-botones a:active,
+.contenedor-botones a:focus {
+  display: block;
+  width: 100%;
+  text-decoration: none !important;
+  -webkit-text-decoration: none !important;
+  color: inherit;
+}
+
+/* Botones ocupan el 100% del ancho */
+.contenedor-botones button {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-color: rojo;
+  cursor: pointer;
+  background: var(--rojo);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: 0.25s ease;
+}
+
+/* Vista estrecha: 2 columnas */
+@media (max-width: 900px) {
+  .contenedor-botones {
+    grid-template-columns: repeat(2, minmax(110px, 1fr));
+  }
+}
+
+.contenedor-botones button:hover {
+  background: var(--rojo-oscuro);
+  transform: translateY(-1px);
+}
+
+/* Controles del reproductor */
+.controles {
+  width: 100%;
+  max-width: 1000px;
+  background: var(--fondo);
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: var(--texto);
+}
+
+#estado {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+/* El video actuará como barra de audio */
+#miReproductor {
+  display: block;
+  width: 100%;
+  height: 100px;
+  background: #000;
+  object-fit: cover;
+}
+
+/* Botones secundarios */
+.acciones {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.acciones button {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+.acciones button:hover { background: #333; }
+
+
+/* Móvil: 1 columna */
+@media (max-width: 300px) {
+  .contenedor-botones {
+    grid-template-columns: 1fr;
+  }
+}
