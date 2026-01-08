@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mi Radio Local</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" href="radio.css" />
+<link rel="icon" type="image/png" href="radio.png"/>
+</head>
+
+<body>
+
+  <h1>Reproductor de Radio</h1>
+
+  <div class="contenedor-botones">
+    <!-- HLS (.m3u8) -->
+    <button onclick="reproducir('https://rnelivestream.rtve.es/rne1/main/master.m3u8', 'RNE 1')">RNE 1</button>
+    <button onclick="reproducir('https://rnelivestream.rtve.es/rner3/main/master.m3u8', 'RNE 3')">RNE 3</button>
+    <button onclick="reproducir('https://rnelivestream.rtve.es/rne5/main/master.m3u8', 'RNE 5')">RNE 5</button>
+
+    <button onclick="reproducir('https://rockfm-cope.flumotion.com/chunks.m3u8', 'RockFM')">RockFM</button>
+    <button onclick="reproducir('https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_1xtra.m3u8', 'BBC 1Xtra')">BBC 1Xtra</button>
+    <button onclick="reproducir('https://rtvelivestream.rtve.es/rtvesec/rne/rne_r2_main.m3u8', 'RNE Clásica')">RNE Clásica</button>
+
+    <!-- MP3 directos (funcionan en <video> también, aunque originalmente son audio) -->
+    <button onclick="reproducir('https://vaughanradioweb.streaming-pro.com:8058/vaughanradio.mp3', 'Vaughan')">Vaughan</button>
+    <button onclick="reproducir('https://kissfm.kissfmradio.cires21.com/kissfm.mp3', 'KissFM')">KissFM</button>
+    <button onclick="reproducir('https://emisoras.cadenaser.com/CADENASER', 'Cadena SER')">SER</button>
+
+        <a href="https://www.rtve.es/play/videos/directo/canales-lineales/tdp/" target="_blank"><button type="button">tdp</button></a>
+        <a href="https://www.rtve.es/play/videos/directo/canales-lineales/la-2/" target="_blank"><button type="button">La 2</button></a>
+        <a href="https://www.rtve.es/play/videos/directo/canales-lineales/la-1/" target="_blank"><button type="button">La 1</button></a>
+        <a href="https://www.rtve.es/play/videos/directo/canales-lineales/24h/" target="_blank"><button type="button">24h</button></a>
+  </div>
+
+  <div class="controles">
+    <p id="estado">Selecciona una emisora</p>
+
+    <!-- Reproductor compatible con HLS en iOS (Safari) -->
+    <video id="miReproductor" controls playsinline>
+      <source id="srcHls" src="" type="application/vnd.apple.mpegurl">
+      <!-- si quisieras fallback para MP3:
+      <source id="srcMp3" src="" type="audio/mpeg">
+      -->
+    </video>
+
+    <div class="acciones">
+      <button id="btnStop" type="button">Detener</button>
+      <button id="btnExit" type="button">Cerrar / Salir</button>
+    </div>
+  </div>
+
+  <script src="radio.js"></script>
+</body>
+</html>
